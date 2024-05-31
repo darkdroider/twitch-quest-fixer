@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitch Quest Fixer
 // @namespace    https://www.twitch.tv/*
-// @version      3.1
+// @version      3.2
 // @description  Fixes Twitch quest issues automatically on specified channels
 // @author       darkdroider
 // @match        https://www.twitch.tv/*
@@ -42,7 +42,9 @@
         'https://www.twitch.tv/damienhaas',
         'https://www.twitch.tv/travisgafford',
         'https://www.twitch.tv/theblackhokage',
-        'https://www.twitch.tv/Alixxa'
+        'https://www.twitch.tv/Alixxa',
+        'https://www.twitch.tv/Rogue',
+        'https://www.twitch.tv/Lourlo'
     ];
 
     const currentUrl = window.location.href.split('?')[0].toLowerCase();
