@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Twitch Quest Fixer
-// @namespace    https://www.twitch.tv/*
-// @version      3.2
+// @namespace    http://tampermonkey.net/
+// @version      3.3
 // @description  Fixes Twitch quest issues automatically on specified channels
-// @author       darkdroider
+// @author       Your Name
 // @match        https://www.twitch.tv/*
-// @updateURL    https://raw.githubusercontent.com/darkdroider/twitch-quest-fixer/main/twitch-quest-fixer.user.js
-// @downloadURL  https://raw.githubusercontent.com/darkdroider/twitch-quest-fixer/main/twitch-quest-fixer.user.js
+// @updateURL    https://raw.githubusercontent.com/USERNAME/twitch-quest-fixer/main/twitch-quest-fixer.user.js
+// @downloadURL  https://raw.githubusercontent.com/USERNAME/twitch-quest-fixer/main/twitch-quest-fixer.user.js
 // @grant        none
 // ==/UserScript==
 
