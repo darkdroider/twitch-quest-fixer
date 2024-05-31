@@ -5,8 +5,8 @@
 // @description  Fixes Twitch quest issues automatically on specified channels
 // @author       darkdroider
 // @match        https://www.twitch.tv/*
-// @updateURL    https://raw.githubusercontent.com/USERNAME/twitch-quest-fixer/main/twitch-quest-fixer.user.js
-// @downloadURL  https://raw.githubusercontent.com/USERNAME/twitch-quest-fixer/main/twitch-quest-fixer.user.js
+// @updateURL    https://raw.githubusercontent.com/darkdroider/twitch-quest-fixer/main/twitch-quest-fixer.user.js
+// @downloadURL  https://raw.githubusercontent.com/darkdroider/twitch-quest-fixer/main/twitch-quest-fixer.user.js
 // @grant        none
 // ==/UserScript==
 
