@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         Twitch Quest Fixer Auto Execute
-// @namespace    http://your-namespace-here.com/
-// @version      5.5
+// @namespace    https://github.com/darkdroider
+// @version      7
 // @description  Automatically execute a script in the console on specified Twitch channels
+// @updateURL    https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
+// @downloadURL  https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
 // @match        *://*.twitch.tv/*
 // @grant        none
 // ==/UserScript==
