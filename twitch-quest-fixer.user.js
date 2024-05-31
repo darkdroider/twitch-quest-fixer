@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitch Quest Fixer
 // @namespace    http://darkdroider.github.io/
-// @version      5.2
+// @version      5.3
 // @description  Auto-grant permissions and track Alienware ARP on Twitch channels.
 // @updateURL    https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
 // @downloadURL  https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
