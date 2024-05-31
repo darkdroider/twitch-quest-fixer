@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitch Quest Fixer
 // @namespace    http://tampermonkey.net/
-// @version      3.4
+// @version      3.5
 // @description  Fixes Twitch quest issues automatically on specified channels
 // @author       darkdroider
 // @match        https://www.twitch.tv/*
