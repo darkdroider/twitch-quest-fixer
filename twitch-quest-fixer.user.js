@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twitch Quest Fixer Auto Execute with UI
 // @namespace    https://github.com/darkdroider
-// @version      7.2
+// @version      7.1
 // @description  Automatically execute a script in the console on specified Twitch channels with a visual interface for status messages
 // @updateURL    https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
 // @downloadURL  https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
@@ -144,18 +144,4 @@
 
     // Execute the script when the page is fully loaded
     window.addEventListener('load', createUIElements);
-    
-    // Independent function to reload the page once after 5 seconds
-    const reloadPageOnce = () => {
-        if (!sessionStorage.getItem('pageReloaded')) {
-            sessionStorage.setItem('pageReloaded', 'true');
-            setTimeout(() => {
-                location.reload();
-            }, 5000);
-        }
-    };
-
-    // Call the independent function to reload the page once after 5 seconds
-    window.addEventListener('load', reloadPageOnce);
-
 })();
