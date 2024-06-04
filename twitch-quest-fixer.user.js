@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Twitch Quest Fixer Auto Execute
+// @name         Twitch Quest Fixer Auto Execute with UI
 // @namespace    https://github.com/darkdroider
-// @version      7
-// @description  Automatically execute a script in the console on specified Twitch channels
+// @version      7.1
+// @description  Automatically execute a script in the console on specified Twitch channels with a visual interface for status messages
 // @updateURL    https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
 // @downloadURL  https://github.com/darkdroider/twitch-quest-fixer/raw/main/twitch-quest-fixer.user.js
 // @match        *://*.twitch.tv/*
@@ -12,7 +12,7 @@
 (function() {
     'use strict';
 
-    console.log('Twitch Quest Fixer script loaded');
+    console.log('Twitch Quest Fixer script with UI loaded');
 
     const scriptToExecute = `
         const extensionID = "ehc5ey5g9hoehi8ys54lr6eknomqgr";
@@ -20,6 +20,25 @@
         const channelId = __APOLLO_CLIENT__.cache.data.data.ROOT_QUERY["channel({\\"name\\":\\""+channel+"\\"})"].__ref.split(":")[1];
         const pollDuration = 60000;
         let authToken = __APOLLO_CLIENT__.cache.data.data["Channel:" + channelId].selfInstalledExtensions.filter(x => x.helixToken.extensionID == extensionID)[0].token.jwt;
+        let inactivityTimeout;
+
+        const updateStatusIndicator = (color) => {
+            const statusIndicator = document.getElementById('status-indicator');
+            if (statusIndicator) {
+                statusIndicator.style.backgroundColor = color;
+            }
+            // Reset the inactivity timer
+            resetInactivityTimer();
+        };
+
+        const resetInactivityTimer = () => {
+            if (inactivityTimeout) {
+                clearTimeout(inactivityTimeout);
+            }
+            inactivityTimeout = setTimeout(() => {
+                updateStatusIndicator('white');
+            }, 60000);
+        };
 
         grantPermission = async () => {
             console.log("Attempting to grant permission automatically...");
@@ -61,8 +80,17 @@
             })
             .then(response => response.json())
             .then(async data => {
-
                 console.log(data);
+
+                /* Update status indicator color based on the message */
+                if (data.state === "streamer_offline") {
+                    updateStatusIndicator('red');
+                } else if (data.state === "streamer_online") {
+                    updateStatusIndicator('cyan');
+                } else if (data.state === "daily_cap_reached") {
+                    updateStatusIndicator('green');
+                }
+
                 /* Attempt to authorize extension if not authorized */
                 if (data.state === "grant_permission") {
                     await grantPermission();
@@ -78,6 +106,35 @@
         handlePolling();
     `;
 
+    // Function to create the UI elements
+    const createUIElements = () => {
+        // Create status indicator
+        const statusIndicator = document.createElement('div');
+        statusIndicator.id = 'status-indicator';
+        statusIndicator.style.width = '20px';
+        statusIndicator.style.height = '20px';
+        statusIndicator.style.borderRadius = '50%';
+        statusIndicator.style.backgroundColor = 'grey';
+        statusIndicator.style.marginLeft = '10px';
+
+        // Create container for the status indicator
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+
+        // Append status indicator to the container
+        container.appendChild(statusIndicator);
+
+        // Add the container next to the specific element
+        const targetElement = document.querySelector('.Layout-sc-1xcs6mc-0.jdpzyl');
+        if (targetElement) {
+            targetElement.insertAdjacentElement('afterbegin', container);
+        }
+
+        // Execute the script immediately
+        executeScript();
+    };
+
     const executeScript = () => {
         const scriptElement = document.createElement('script');
         scriptElement.textContent = scriptToExecute;
@@ -86,5 +143,5 @@
     };
 
     // Execute the script when the page is fully loaded
-    window.addEventListener('load', executeScript);
+    window.addEventListener('load', createUIElements);
 })();
